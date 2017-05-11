@@ -39,9 +39,7 @@ fs.readFile(__dirname + "/staedte.json","utf-8",function(err, data)
         }
     }
             
-
-    console.log(sortiertestadt);
-    
+    //das erstellen und das konkettieren der zur schreibenden inhalte
     var str1 = "{ \"ciites\":";
     var str2 = "}";
     var myJsonString = str1.concat(JSON.stringify(sortiertestadt));
