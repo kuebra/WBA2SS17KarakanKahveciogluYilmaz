@@ -1,6 +1,6 @@
 var fs = require('fs');
 var chalk = require('chalk');
-var tuerme = [];
+var Staedte = [];
 
 fs.readFile(__dirname + "/staedte.json","utf-8",function(err, data)
 {
@@ -21,11 +21,11 @@ fs.readFile(__dirname + "/staedte.json","utf-8",function(err, data)
 
 
             // mein code            
-            var turm = {"name":obj[prop].name, "country":obj[prop].country, "population":obj[prop].population };
-            tuerme.push(turm);
+            var stadt = {"name":obj[prop].name, "country":obj[prop].country, "population":obj[prop].population };
+            Staedte.push(stadt);
 
                   //die türme werden sortiert
-            var sortierterturm = tuerme.sort(function(a,b)
+            var sortiertestadt = Staedte.sort(function(a,b)
                                         {  
                                     if (a.population > b.population) 
                                     {
@@ -40,14 +40,20 @@ fs.readFile(__dirname + "/staedte.json","utf-8",function(err, data)
     }
             
 
-    console.log(sortierterturm);
-    var myJsonString = JSON.stringify(sortierterturm);
-            fs.writeFile(__dirname+ "/staedte_sortiert.json",myJsonString,function(err){
+    console.log(sortiertestadt);
+    
+    var str1 = "{ \"ciites\":";
+    var str2 = "}";
+    var myJsonString = str1.concat(JSON.stringify(sortiertestadt));
+    var myJsonString2 = myJsonString.concat(str2);
+            fs.writeFile(__dirname+ "/staedte_sortiert.json",myJsonString2,function(err){
                 if(err) throw err;
             });
 
-    fs.readFile(__dirname + "/staedte_sortiert.json","utf-8",function(err, data){
-    var y = JSON.parse(data);
+    fs.readFile(__dirname + "/staedte_sortiert.json","utf-8",function(err, data)
+    {
+
+           var y = JSON.parse(data);
 
     //code aus dem internet
     for (var text2 in y) 
@@ -63,9 +69,9 @@ fs.readFile(__dirname + "/staedte.json","utf-8",function(err, data)
         if (!obj2.hasOwnProperty(prop2)) continue;
 
           // mein code
-            console.log(chalk.styles.blue.open+  "Name: " + obj2[prop2].name + chalk.styles.blue.close);
+            console.log(chalk.styles.red.open+  "Name: " + obj2[prop2].name + chalk.styles.red.close);
             console.log("Land: " + obj2[prop2].country);
-            console.log(chalk.styles.yellow.open + "Einwohner: " + obj2[prop2].population + chalk.styles.yellow.close);
+            console.log(chalk.styles.cyan.open + "Einwohner: " + obj2[prop2].population + chalk.styles.cyan.close);
             console.log("-------------------------------");
 
         } 
