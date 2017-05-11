@@ -60,9 +60,8 @@ fs.readFile(__dirname + "/staedte.json","utf-8",function(err, data)
         for (var prop2 in obj2)
         {
         // skip loop if the property is from prototype
-        if (!obj2.hasOwnProperty(text2)) continue;
+        if (!obj2.hasOwnProperty(prop2)) continue;
 
-        var obj2 = y[text2];
           // mein code
             console.log(chalk.styles.blue.open+  "Name: " + obj2[prop2].name + chalk.styles.blue.close);
             console.log("Land: " + obj2[prop2].country);

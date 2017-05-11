@@ -25,8 +25,3 @@ fs.readFile(__dirname + "/staedte.json","utf-8",function(err, data){
         }
     }    
 });
-
-
-
-
-          
