@@ -1,3 +1,8 @@
+/** Dieses Script ist das Beispiel Script von Google und wird nur zu Testzwcken benutzt.
+	Quelle: https://developers.google.com/google-apps/calendar/quickstart/nodejs
+*/
+
+//meine Funktion
 var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
