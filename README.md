@@ -1,8 +1,8 @@
 # **V**eranstaltungs-**F**rüh-**W**arn-**S**ystem (**VFWS**)
-#### WBA2 SoSe 2017
-#### Mentorengruppe: 3
-#### Betreuer: Sheree Saßmannshausen,Jorge Pereira
-#### Mitglieder: Birnur Kahvecioglu, Kübra Yilmaz, Abdurrahman Karakan
+WBA2 SoSe 2017  
+Mentorengruppe: 3  
+Betreuer: Sheree Saßmannshausen, Jorge Pereira  
+Mitglieder: Birnur Kahvecioglu, Kübra Yilmaz, Abdurrahman Karakan
 
 **Idee:**
 ------
