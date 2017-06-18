@@ -4,20 +4,20 @@ var jsonParser = bodyParser.json();
 var app = express();
 var fs = require('fs');
 
-var neuTermin ={
-	ID:"4",
+var neuTermin = {
+	ID: "4",
 	Name : "GDVK",
 	Person : "Noss",
 	Raum : "1682",
 	Datum: "17.1.2017",
 	StartZeit: "13:00",
-	EndZeit: "14:00"	
+	EndZeit: "14:00"
 };
 
 //Start
-app.get('/', function(req,res){
+app.get('/', function (req, res) {
 	console.log("hauptseite:");
-	res.send("Hauptseite")
+	res.send("Hauptseite");
 });
 
 
@@ -84,6 +84,7 @@ app.get('/Termine', function(req,res){
 });
 
 app.delete('/loschen', function(req,res){
+	//termine2 weil test datei
 	fs.readFile(__dirname + "/Termine2.json","utf-8",function(err,data)
 	{
 		var alleTermine = JSON.parse(data);
