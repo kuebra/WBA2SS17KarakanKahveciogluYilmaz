@@ -3,38 +3,43 @@
   <head>
     <meta charset="utf-8">
     <title>input-Elemente</title>
+	  
+	  <script src="datenholen.js"></script>
+	  
   </head>
   <body>
     <form>
 		
       <label for="Fach">Fach:
-        <input id="Fach" name="Fach">
+        <input id="Fach" name="Fach" value="Fach">
       </label>
 		
       <label for="Person">Person: 
-        <input id="Person" name="Person">
+        <input id="Person" name="Person" value="Person">
       </label>
 
 		
     	<label for="Raum">Raum:
-        	<input id="Raum" name="Raum">
+        	<input id="Raum" name="Raum" value="Raum">
       	</label>
 		
       	<label for="Datum">Datum: 
-        	<input type="date" id="Datum" name="Datum">
+        	<input type="date" id="Datum" name="Datum" value="2017-04-12">
       	</label>
 		
 		<label for="StartZeit">Startzeit
-			<input type="time" id="StartZeit" name="StartZeit">
+			<input type="time" id="StartZeit" name="StartZeit" value="19:00">
 		</label>
 		
 		<label for="EndZeit">EndZeit
-			<input type="time" id="EndZeit" name="Endzeit">
+			<input type="time" id="EndZeit" name="Endzeit" value="20:00">
 		</label>
 		
-
-      <input type="submit" value="senden">
+		<button onclick="gibWerte()">Senden</button>
+		
     </form>
+	  
+	  
 
   </body>
 </html>

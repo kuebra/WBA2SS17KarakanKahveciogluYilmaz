@@ -6,7 +6,7 @@ var fs = require('fs');
 
 var neuTermin = {
 	ID: "4",
-	Name : "GDVK",
+	Name :"GDVK",
 	Person : "Noss",
 	Raum : "1682",
 	Datum: "17.1.2017",
@@ -19,36 +19,6 @@ app.get('/', function (req, res) {
 	console.log("hauptseite:");
 	res.send("Hauptseite");
 });
-
-
-//Einfügen von terminen
-app.put('/Einfugen', function(req,res){
-
-	fs.readFile(__dirname + "/Termine.json","utf-8",function(err,data)
-	{
-
-		var obj = JSON.parse(data);
-		
-		var NeueTermine = JSON.stringify(neuTermin);
-		
-		
-		//Push Funktioniert nicht!!!!!!
-		obj['Termine'].push(NeueTermine);
-		
-		var z = JSON.stringify(obj)
-		
-		
-		fs.writeFile(__dirname+ "/Termine2.json",z,function(err)
-		{
-                if(err) throw err;
-        });
-	})
-	
-	console.log("Alles fertig");
-	res.send("alles Fertig");
-	
-});
-
 
 //holen von terminen
 app.get('/Termine', function(req,res){
