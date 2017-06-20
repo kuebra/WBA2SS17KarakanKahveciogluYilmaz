@@ -6,13 +6,22 @@ var fs = require('fs');
 
 var neuTermin = {
 	ID: "4",
-	Name :"GDVK",
+	Fach :"GDVK",
 	Person : "Noss",
 	Raum : "1682",
 	Datum: "17.1.2017",
 	StartZeit: "13:00",
 	EndZeit: "14:00"
 };
+
+//um die url mit variablen zu verbinden
+//wird noch nicht benutzt
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+
+//um den request zu parsen
+app.use(bodyParser.json());
 
 //Start
 app.get('/', function (req, res) {
@@ -40,7 +49,7 @@ app.get('/Termine', function(req,res){
           // mein code
 			console.log("Die Daten sind.")
 			console.log("ID "+ einTermin[prop2].ID)
-			console.log("Name "+ einTermin[prop2].Name);
+			console.log("Fach "+ einTermin[prop2].Fach);
 			console.log("Person "+ einTermin[prop2].Person);
 			console.log("Raum "+ einTermin[prop2].Raum);
 			console.log("Startzeit "+ einTermin[prop2].StartZeit);
@@ -76,7 +85,7 @@ app.delete('/loschen', function(req,res){
 			}
 			else
 				{
-					if(einTermin[prop2].ID==="2")
+					if(einTermin[prop2].ID===2)
 					{
 						console.log("nummer 2 wurde entdeckt")
 						var gelöscht = einTermin[prop2];
@@ -98,7 +107,7 @@ app.delete('/loschen', function(req,res){
 						// mein code
 						console.log("Die Daten sind.")
 						console.log("ID "+ einTermin[prop2].ID)
-						console.log("Name "+ einTermin[prop2].Name);
+						console.log("Fach "+ einTermin[prop2].Name);
 						console.log("Person "+ einTermin[prop2].Person);
 						console.log("Raum "+ einTermin[prop2].Raum);
 						console.log("Startzeit "+ einTermin[prop2].StartZeit);

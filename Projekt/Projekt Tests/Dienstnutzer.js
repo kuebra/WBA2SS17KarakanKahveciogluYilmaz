@@ -4,31 +4,24 @@ var jsonParser = bodyParser.json();
 var app = express();
 var fs = require('fs');
 
-//Holen der daten 		
-var neuertermin = function gibWerte()
-	{
-		var vonHtmlTermin ={
-			
-				//Funktioniert nicht weil Node.js keine html Befehle unterstützt
-				//neue lösung wird gesucht
-				ID: "4",
-				Name : document.getElementById("Fach").nodeValue,
-				Person : document.getElementById("Person").nodeValue,
-				Raum : document.getElementById("Raum").nodeValue,
-				Datum: document.getElementById("Datum").nodeValue,
-				StartZeit: document.getElementById("StartZeit").nodeValue,
-				EndZeit: document.getElementById("EndZeit").nodeValue
-		}
-		console.log(vonHtmlTermin);
-		return vonHtmlTermin;
-	};
-	
+
+//um die url mit variablen zu verbinden
+//wird noch nicht benutzt
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+
+//um den request zu parsen
+app.use(bodyParser.json());
+
 //Einfügen von terminen
-app.post('/Einfugen', function(req,res){
+app.post('/einfugen', function(req,res){
 	
-	console.log(neuerTermin);
+
 	
-	res.send(neuerTermin);
+	console.dir(req.body.form.name);
+	
+	res.send(req.body.form);
 	
 	
 	
@@ -57,7 +50,6 @@ app.post('/Einfugen', function(req,res){
 	res.send("alles Fertig");
 	*/
 });
-
 
 //listener
 app.listen(3001,function(){
