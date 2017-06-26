@@ -4,16 +4,6 @@ var jsonParser = bodyParser.json();
 var app = express();
 var fs = require('fs');
 
-var neuTermin = {
-	ID: "4",
-	Fach :"GDVK",
-	Person : "Noss",
-	Raum : "1682",
-	Datum: "17.1.2017",
-	StartZeit: "13:00",
-	EndZeit: "14:00"
-};
-
 //um die url mit variablen zu verbinden
 //wird noch nicht benutzt
 app.use(bodyParser.urlencoded({
@@ -23,10 +13,42 @@ app.use(bodyParser.urlencoded({
 //um den request zu parsen
 app.use(bodyParser.json());
 
+//einfügen
+app.post('/einfugen',function(req,res){
+	
+	console.log("/einfügen");
+	console.log(req.body);
+	
+	fs.readFile(__dirname + "/Termine.json","utf-8",function(err,data)
+	{
+		
+		var obj = JSON.parse(data);
+		
+		obj['Termine'].push(req.body);
+		
+		var z = JSON.stringify(obj)
+		
+		
+		fs.writeFile(__dirname+ "/Termine.json",z,function(err)
+		{
+                if(err) 
+				{
+					throw err;
+					res.status(400).send("Fehler ist aufgetreten!")
+				}
+        });
+	})
+	
+	console.log("daten Eingefügt");
+	res.status(200).send("ok");
+});
+
 //Start
 app.get('/', function (req, res) {
-	console.log("hauptseite:");
-	res.send("Hauptseite");
+	
+	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
+	
+	res.status(200).send("Hauptseite");
 });
 
 //holen von terminen
@@ -57,16 +79,20 @@ app.get('/Termine', function(req,res){
             console.log("-------------------------------");
         }
 		
-		res.send(einTermin);
+		res.status(200).send(einTermin);
 	}	
 	})
 });
 
-app.delete('/loschen', function(req,res){
+app.delete('/loschen:id', function(req,res){
 	//termine2 weil test datei
 	fs.readFile(__dirname + "/Termine2.json","utf-8",function(err,data)
 	{
 		var alleTermine = JSON.parse(data);
+		var notNAN = String(req.params.id);
+	
+		var id = parseInt(notNAN);
+		console.log(typeof(id) + " " + id);
 		
 		for (var x in alleTermine) 
 		{
@@ -85,7 +111,12 @@ app.delete('/loschen', function(req,res){
 			}
 			else
 				{
-					if(einTermin[prop2].ID===2)
+					
+					//-------------------------------------------
+					var einTerminID = String(einTermin[prop2].ID);
+					console.log("-----------------------"+einTerminID+typeof(einTerminID));
+					//__________________________________if überprüfung funktiniert nicht
+					if(einTerminID===id)
 					{
 						console.log("nummer 2 wurde entdeckt")
 						var gelöscht = einTermin[prop2];
@@ -119,7 +150,7 @@ app.delete('/loschen', function(req,res){
 			
         }
 		
-		res.send(einTermin);
+		res.status(200).send(einTermin);
 	}	
 	})
 	
