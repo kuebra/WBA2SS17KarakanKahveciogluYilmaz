@@ -50,7 +50,7 @@ app.post('/einfugen', function(req,res){
 	
 	console.log(options.uri);
 	request(options, function(err,response,body){
-		res.json(body);
+		res.send(body);
 	});
 		
 	
@@ -63,7 +63,7 @@ app.get('/', function(req, res){
 	var url = dURL + '/';
 	
 	request(url,function(err,response,body){
-		res.status(200).send(body);
+		res.send(body);
 	});
 	
 });
@@ -71,14 +71,14 @@ app.get('/', function(req, res){
 
 app.get('/termine', function(req,res){
 	
-	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
+	console.log(req.path);
 	var url = dURL + '/Termine';
 	
 	request(url,function(err,response,body){
 		if (err) 
 		{
-			throw err;
 			res.status(400).json("Fehler");
+			throw err;
 		}
 		else
 		{
@@ -101,7 +101,7 @@ app.get('/termine:Fach', function(req,res){
 		json: req.params.Fach
 	}
 	
-	request(options, function(req,res){
+	request(options, function(err,response,body){
 		res.json(body);
 	});
 	

@@ -47,7 +47,9 @@ app.get('/', function (req, res) {
 	
 	console.log(req.path);
 	
-	res.status(200).send("Hauptseite");
+	var x = "hauptseite";
+	res.send(x);
+	
 });
 
 //holen von terminen
