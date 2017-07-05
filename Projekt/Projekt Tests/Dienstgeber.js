@@ -20,11 +20,11 @@ app.post('/einfugen',function(req,res){
 	fs.readFile(__dirname + "/Termine.json","utf-8",function(err,data)
 	{
 		
-		var obj = JSON.parse(data);
+		var alleTermine = JSON.parse(data);
 		
-		obj['Termine'].push(req.body);
+		alleTermine['Termine'].push(req.body);
 		
-		var z = JSON.stringify(obj)
+		var z = JSON.stringify(alleTermine);
 		
 		
 		fs.writeFile(__dirname+ "/Termine.json",z,function(err)
@@ -62,8 +62,10 @@ app.get('/Termine', function(req,res){
 		for (var i in alleTermine.Termine)
 			{
 				var x = alleTermine.Termine[i];
+				if (x===null) continue;
+				res.write(JSON.stringify(x));
 			}
-		res.status(200).send(alleTermine.Termine);
+		res.status(200).end();
 		
 	})
 });
@@ -98,41 +100,51 @@ app.get('/Termine:Fach',function(req,res){
 	});
 });
 
-
 app.delete('/loschen:id', function(req,res){
 	
 	console.log(req.path);
 	
-	fs.readFile(__dirname + "/Termine.json","utf-8",function(err,data)
-	{
-		var id = req.params.id.replace(':','');
-		
-		var geloescht = false;
-		
-		var alleTermine = JSON.parse(data);
-		
-		for (var i in alleTermine.Termine)
-			{
-				var einTermin = alleTermine.Termine[i];
-				
-				//um eine abfrage zu einem schon gelöschten eintrag zu verhindern und dadurch einem crash vorzubeugen
-				if (einTermin === null) continue;
-				if (einTermin.ID===id)
+	var myJsonString2;
+	
+	var x = fs.readFileSync(__dirname + "/Termine.json","utf-8");
+	var alleTermine = JSON.parse(x);
+	
+	var id = req.params.id.replace(':','');
+	var geloescht = false;	
+
+	for (var i in alleTermine.Termine)
+		{
+			var einTermin = alleTermine.Termine[i];
+
+			//um eine abfrage zu einem schon gelöschtem Eintrag zu verhindern und dadurch einem Crash vorzubeugen
+			if (einTermin === null) continue;
+			if (einTermin.ID===id)
+				{
+					if (fs.existsSync( __dirname+"/gelöschte_Termine.json"))
 					{
-						var str1 = "{ \"Gelöschte_Termine\":";
-						var str2 = "}";
-						var myJsonString = str1.concat(JSON.stringify(einTermin));
-						var myJsonString2 = myJsonString.concat(str2);
+						var y = fs.readFileSync(__dirname+"/gelöschte_Termine.json","utf-8");
+						var alleGelöschtenTermine = JSON.parse(y);
+						alleGelöschtenTermine['Gelöschte_Termine'].push(einTermin);
 						
-						fs.writeFile(__dirname+ "/gelöschte_Termine.json",myJsonString2,function(err){
-									if(err) throw err;
-						});
-						
-						delete alleTermine.Termine[i];
-						geloescht = true;
-						
+						myJsonString2 = JSON.stringify(alleGelöschtenTermine);
 					}
-			}
+					else
+					{
+						var str1 = "{ \"Gelöschte_Termine\":[";
+						var str2 = "]}";
+						var myJsonString = str1.concat(JSON.stringify(einTermin));
+						myJsonString2 = myJsonString.concat(str2);	
+					}
+
+					fs.writeFile(__dirname+ "/gelöschte_Termine.json",myJsonString2,function(err){
+								if(err) throw err;
+					});
+
+					delete alleTermine.Termine[i];
+					geloescht = true;
+
+				}
+		}
 		var StringJson= JSON.stringify(alleTermine);
 		fs.writeFile(__dirname +"/Termine.json",StringJson,function(err)
 		{
@@ -149,9 +161,30 @@ app.delete('/loschen:id', function(req,res){
 				var nachricht = "die daten mit der ID: "+id+" wurde gelöscht.";
 				res.status(200).send(nachricht)
 			}
-	})
-	
+});
 
+app.get('/geloschte', function(req,res){
+	
+	console.log(req.path);
+	
+	if(fs.existsSync(__dirname + "/gelöschte_Termine.json"))
+		{
+			fs.readFile(__dirname + "/gelöschte_Termine.json","utf-8", function(err,data)
+			{		
+				var alleTermine = JSON.parse(data);
+				for (var i in alleTermine.Gelöschte_Termine)
+				{
+					var x = alleTermine.Gelöschte_Termine[i];
+					res.write(JSON.stringify(x));
+				}
+				res.end();
+			});
+		}
+	else
+	{
+		res.status(404).send("Die datei wurde nicht gefunden!");
+	}
+	
 	
 });
 
@@ -159,4 +192,3 @@ app.delete('/loschen:id', function(req,res){
 app.listen(3000,function(){
 	console.log('Listening on Port 3000');
 });
-
