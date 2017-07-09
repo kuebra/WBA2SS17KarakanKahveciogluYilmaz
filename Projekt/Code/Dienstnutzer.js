@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
 //um den request zu parsen
 app.use(bodyParser.json());
 
-
+//daten löschen 
 app.delete('/loschen:id', function(req,res){
 	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
 	
@@ -30,7 +30,7 @@ app.delete('/loschen:id', function(req,res){
 	}
 	
 	request(options, function(err,response,body){
-		res.send(body);
+		res.status(response.statusCode).send(body);
 	});
 	
 });
@@ -50,40 +50,32 @@ app.post('/einfugen', function(req,res){
 	
 	console.log(options.uri);
 	request(options, function(err,response,body){
-		res.send(body);
+		res.status(response.statusCode).send(body);
 	});
-		
-	
 });
 
 app.get('/', function(req, res){
 	
 	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
 	
+	console.
+	
 	var url = dURL + '/';
 	
 	request(url,function(err,response,body){
-		res.send(body);
+		res.status(response.statusCode).send(body);
 	});
 	
 });
 
-
+//Holen Aller Termine
 app.get('/termine', function(req,res){
 	
-	console.log(req.path);
+	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
 	var url = dURL + '/Termine';
 	
 	request(url,function(err,response,body){
-		if (err) 
-		{
-			res.status(400).json("Fehler");
-			throw err;
-		}
-		else
-		{
-			res.status(200).json(body);
-		}
+		res.status(response.statusCode).send(body);
 	});
 	
 });
@@ -91,41 +83,30 @@ app.get('/termine', function(req,res){
 //holen von terminen eines bestimmten faches
 app.get('/termine:Fach', function(req,res){
 	
-	var clientFach = req.params.Fach;
-	
-	
+	var clientFach = req.params.Fach.replace(':','');
 	
 	var options ={
 		uri: dURL + '/termine:' + clientFach,
-		method: 'GET',
-		json: req.params.Fach
+		method: 'GET'
 	}
 	
 	request(options, function(err,response,body){
-		res.json(body);
+		res.status(response.statusCode).send(body);
 	});
-	
-	/*request(url,function(err,response,body){
-		if(err)
-			{
-				throw err;
-				res.status(400).send("Fehler");
-			}
-		else
-			{
-				var jsonTermine = JSON.parse(body);
-				jsonTermine.forEach(function(termine)
-				{
-					if (Object.keys(termine).length<1) return;
-					console.log(termine.ID);
-					res.write(termine.ID);
-				})
-				res.end();
-			}
-		
-	})*/
 });
 
+//finde termine für ein bestimmtes Fach
+app.get('/findefuer:Fach', function(req,res){
+	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
+	
+	var options = {
+		uri: dURL+'/Termine';
+		
+	}
+	
+	require
+	
+});
 
 //listener
 app.listen(8080,function(){
