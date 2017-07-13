@@ -4,6 +4,7 @@ var jsonParser = bodyParser.json();
 var app = express();
 var fs = require('fs');
 var request =require('request');
+var dateFormat = require('dateformat');
 
 var dHost = 'http://localhost';
 var dPort = 3000;
@@ -131,8 +132,8 @@ app.get('/findeTermin:Min', function(req,res){
 
 		//sotieren um die Suchergebnisse zu verbessern
 		//Quelle: https://stackoverflow.com/a/1129270
-		dateEvents.sort(function(a,b) {return (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0);} ); 
-		
+		dateEvents = dateEvents.sort(function(a,b) {return (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0)} ); 
+		console.log(dateEvents);
 		//Berechnung der benötigten Zeit mithilfe von
 		//Quelle: https://stackoverflow.com/a/38999603
 		var requiredGap = min * 60 * 1000;
@@ -156,11 +157,15 @@ app.get('/findeTermin:Min', function(req,res){
 		  }
 		   prev = current;
 		}
-
+		
+		
+		
 		//wenn keine freien Blöcken gefunden wurden dann firstGap == null
 		if (firstGap != null) 
 		{
-		  res.status(200).send("Nächster freie Termin um: "+ firstGap.start)
+			var x = dateFormat(firstGap.start, "dd.mm.yyyy' 'HH:MM");
+		  var nachricht = "Nächster freie Termin um: "+x;
+		  res.status(200).send(nachricht);
 		} 
 		else 
 		{
