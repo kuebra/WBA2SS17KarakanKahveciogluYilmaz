@@ -58,7 +58,6 @@ app.get('/', function(req, res){
 	
 	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
 	
-	console.
 	
 	var url = dURL + '/';
 	
@@ -83,6 +82,8 @@ app.get('/termine', function(req,res){
 //holen von terminen eines bestimmten faches
 app.get('/termine:Fach', function(req,res){
 	
+	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
+	
 	var clientFach = req.params.Fach.replace(':','');
 	
 	var options ={
@@ -95,16 +96,78 @@ app.get('/termine:Fach', function(req,res){
 	});
 });
 
-//finde termine für ein bestimmtes Fach
-app.get('/findefuer:Fach', function(req,res){
+//finde den nächsten freien Terminblock
+app.get('/findeTermin:Min', function(req,res){
 	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
 	
-	var options = {
-		uri: dURL+'/Termine';
-		
-	}
+	var min = parseInt(req.params.Min.replace(':',''));
 	
-	require
+	var options ={
+		uri: dURL + '/termine',
+		method: 'GET'
+	}
+	request(options, function(err,response,body)
+	{	
+
+		//rückwandlung des Bodys vom dienstgebers zu einem JSON String
+		var myJsonString = "{ \"Termine\":["+body+"]}";
+		var toParse = myJsonString.replace(/}/g,"},").replace(",]","]").slice(",",-1);
+
+		//Parsen zu js Objekt
+		var alleTermine = JSON.parse(toParse);
+
+		//Das Filtern der Benötigten Daten
+		var dateEvents=[];
+		for (var i in alleTermine.Termine)
+		{
+			var s = alleTermine.Termine[i];
+			var date=
+			{
+				start:  new Date(s.Datum+"T"+s.StartZeit),
+				end: new Date(s.Datum+"T"+s.EndZeit)
+			}
+			dateEvents.push(date);
+		}
+
+		//sotieren um die Suchergebnisse zu verbessern
+		//Quelle: https://stackoverflow.com/a/1129270
+		dateEvents.sort(function(a,b) {return (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0);} ); 
+		
+		//Berechnung der benötigten Zeit mithilfe von
+		//Quelle: https://stackoverflow.com/a/38999603
+		var requiredGap = min * 60 * 1000;
+		var prev = dateEvents[0];
+		var firstGap = null;
+
+		//Die Suche nach dem Zeitblock
+		for (var i = 0; i < dateEvents.length; i += 1)
+		{
+		  var current = dateEvents[i];
+		  var diff = current.start - prev.end;
+
+		  if (diff >= requiredGap) 
+		  {
+			firstGap = 
+			{
+			  start: prev.end,
+			  end: current.start
+			};
+			break;
+		  }
+		   prev = current;
+		}
+
+		//wenn keine freien Blöcken gefunden wurden dann firstGap == null
+		if (firstGap != null) 
+		{
+		  res.status(200).send("Nächster freie Termin um: "+ firstGap.start)
+		} 
+		else 
+		{
+		  res.status(400).send("Leider keine freien Termine.")
+		}
+
+	});
 	
 });
 

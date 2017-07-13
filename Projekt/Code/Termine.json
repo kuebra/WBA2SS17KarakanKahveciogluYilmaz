@@ -1,3 +1,4 @@
+
 {
 	"Termine": [{
 		"ID": "1"
@@ -21,8 +22,8 @@
 		, "Person": "Dr. Makaroni"
 		, "Raum": "1302"
 		, "Datum": "2017-07-01"
-		, "StartZeit": "11:00"
-		, "EndZeit": "12:00"
+		, "StartZeit": "14:00"
+		, "EndZeit": "15:00"
 	}, {
 		"ID": "4"
 		, "Fach": "deutsch"
@@ -30,7 +31,7 @@
 		, "Raum": "2013"
 		, "Datum": "2017-07-01"
 		, "StartZeit": "11:00"
-		, "EndZeit": "12:00"
+		, "EndZeit": "13:00"
 	}, {
 		"ID": "5"
 		, "Fach": "Physik"
@@ -38,7 +39,7 @@
 		, "Raum": "2013"
 		, "Datum": "2017-07-01"
 		, "StartZeit": "11:00"
-		, "EndZeit": "12:00"
+		, "EndZeit": "14:00"
 	}, {
 		"ID": "6"
 		, "Fach": "PP"
@@ -46,6 +47,6 @@
 		, "Raum": "K001"
 		, "Datum": "2017-07-01"
 		, "StartZeit": "11:00"
-		, "EndZeit": "12:00"
+	, "EndZeit": "12:00"
 	}]
 }
