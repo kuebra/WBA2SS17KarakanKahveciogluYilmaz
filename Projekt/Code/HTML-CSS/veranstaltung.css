@@ -15,20 +15,18 @@ li a {
     color: white;
     text-align: center;
     padding: 14px 16px;
-    text-decoration:none;
+    text-decoration: none;
 }
 
 li a:hover {
     background-color: #A4A4A4;
-    color:darkslategray;
-    
+    color:white;
 }
 
 ul {
-    color:#666;
-    text-align:justify;
+    color: #666;
+    text-align: justify;
     padding: 14px 16px;
-    
 }
 
 li {
@@ -50,7 +48,108 @@ li a {
 
 h1 {
     color: #555555;
-    border:blue;
+    border: blue;
     padding: 14px 16px;
-    
+    background: #A4A4A4;
 }
+
+h1:hover {
+    background-color: #A4A4A4;
+    color: white;
+}
+
+.ID {
+    background-color: grey;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.Fach {
+    background-color: grey;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.Person {
+    background-color: grey;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.Raum {
+    background-color: grey;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.Datum {
+    background-color: grey;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.StartZeit {
+    background-color: grey;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.EndZeit {
+    background-color: grey;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+
+
+td  {
+    background-color: none;
+    color: grey;
+    border: yellow;
+    padding: 15px 23.4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+
+

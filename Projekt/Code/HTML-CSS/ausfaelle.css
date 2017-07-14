@@ -47,3 +47,172 @@ ul {
 li a {
     color: #666;
 }
+
+h1 {
+    color: #555555;
+    border:blue;
+    padding: 14px 16px;
+    background: #A4A4A4;
+
+}
+h1:hover {
+    background-color: #A4A4A4;
+    color:white;
+    
+}
+
+
+
+.ID {
+    background-color: grey; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+
+.Fach {
+    background-color: grey; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+ .Person {
+    background-color: grey; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.Raum {
+    background-color: grey; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.Datum {
+    background-color: grey; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.StartZeit {
+    background-color: grey;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display:inline-block;
+    font-size: 16px;
+    
+}
+.EndZeit {
+    background-color: grey; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align:center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+      
+}
+
+
+td  {
+    background-color: none;
+    color: grey;
+    padding: 15px 23.4px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+
+
+.MA1 {
+  width: 3%;
+  height: 3%;
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: orange;
+  }
+  100% {
+    background-color: #FF4136;
+      color:white;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.MA2 {
+  width: 3%;
+  height: 3%;
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: orange;
+  }
+  100% {
+    background-color: #FF4136;
+      color:white;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.AP2{
+  width: 3%;
+  height: 3%;
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: orange;
+  }
+  100% {
+    background-color: #FF4136;
+      color:white;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
