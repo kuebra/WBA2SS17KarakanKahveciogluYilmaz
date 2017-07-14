@@ -18,6 +18,8 @@ li a {
     text-decoration: none;
 }
 
+
+
 li a:hover {
     background-color: #A4A4A4;
     color:white;
@@ -58,98 +60,20 @@ h1:hover {
     color: white;
 }
 
-.ID {
-    background-color: grey;
-    /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+
+table {
+	font-family: sans-serif;
+	border-collapse: collapse;
+	width:  100%;
 }
 
-.Fach {
-    background-color: grey;
-    /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.Person {
-    background-color: grey;
-    /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.Raum {
-    background-color: grey;
-    /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.Datum {
-    background-color: grey;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.StartZeit {
-    background-color: grey;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.EndZeit {
-    background-color: grey;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+td, th{
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 8px;
 }
 
 
-
-
-td  {
-    background-color: none;
-    color: grey;
-    border: yellow;
-    padding: 15px 23.4px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
-
-

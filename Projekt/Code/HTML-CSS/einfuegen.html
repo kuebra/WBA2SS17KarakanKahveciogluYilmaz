@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Veranstaltungsfrühwarn-System</title>
+
+
+    <header><b><ul>Herzlich willkommen beim Veranstaltungsfrühwarn- System der TH Köln!</ul></b></header>
+
+
+    <link rel="stylesheet" href="einfuegen.css">
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="veranstaltung.html">Veranstaltungen</a></li>
+            <li><a href="ausfaelle.html">Ausfälle</a></li>
+            <li><a href="einfuegen.html">Einfügen</a></li>
+            
+        </ul>
+
+    </nav>
+    <h1>Einfügen</h1>
+	
+	<p>Der nächste freie Block:</p>
+      
+    <form action="/einfugen" method="post">
+
+		<div>
+			<label class="Fach" for="Fach">Fach:</label>
+			<input id="Fach" name="Fach"  Placeholder="Fach">
+		</div>
+		
+		<div>
+			<label class="Person" for="Person">Person:</label>
+			<input id="Person" name="Person" Placeholder="Person">
+		</div>
+		
+		<div>			
+			<label class="Raum" for="Raum">Raum:</label>
+			<input id="Raum" name="Raum"  Placeholder="Raum">
+		</div>
+		
+		<div>
+			<label class="Datum" for="Datum">Datum:</label>
+			<input type="date" id="Datum" name="Datum"  value="1970-01-01">
+		</div>
+		
+		<div>
+			<label class="StartZeit" for="StartZeit">Startzeit:</label>
+			<input type="time" id="StartZeit" name="StartZeit"  value="00:00">
+		</div>
+		
+		<div>
+			<label class="EndZeit" for="EndZeit">EndZeit:</label>
+			<input type="time" id="EndZeit" name="Endzeit"  value="00:00">
+		</div>
+		
+		<input type="submit" value="Senden">
+
+    </form>
+
+</body>

@@ -1,138 +1,88 @@
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
 }
 
 li {
-    float: left;
+	float: left;
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration:none;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
 
 li a:hover {
-    background-color: #A4A4A4;
-    color:darkslategray;
-    
+	background-color: #A4A4A4;
+	color: darkslategray;
 }
 
 ul {
-    color:#666;
-    text-align:justify;
-    padding: 14px 16px;
-    
+	color: #666;
+	text-align: justify;
+	padding: 14px 16px;
 }
 
 li {
-    border-right: 1px solid #bbb;
+	border-right: 1px solid #bbb;
 }
 
 li:last-child {
-    border-right: 1px solid #bbb;
+	border-right: 1px solid #bbb;
 }
 
 ul {
-    border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
+	border: 1px solid #e7e7e7;
+	background-color: #f3f3f3;
 }
 
 li a {
-    color: #666;
+	color: #666;
 }
 
 h1 {
-    color: #555555;
-    border:blue;
-    padding: 14px 16px;
-    background: #A4A4A4;
+	color: #555555;
+	border: blue;
+	padding: 14px 16px;
+	background: #A4A4A4;
 }
 
 h1:hover {
-    background-color: #A4A4A4;
-    color:white;
-    
+	background-color: #A4A4A4;
+	color: white;
 }
 
- .Fach{
-    background-color: grey; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 2px;
-    text-align: center;
-    text-decoration: none;
+form {
+	background-color: #f3f3f3;
+	padding: 16px;
+}
+
+div {
+	margin-bottom: 8px;
+}
+
+input[type=submit]{
+	cursor: pointer;
+}
+
+body > p {
+	padding: 5px;
+	border-style: solid;
+	border-color: red;
+	border-width: 5px;
+}
+
+div > input{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
     display: inline-block;
-    font-size: 16px;
-}
-
-
-.Person{
-    background-color: grey; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 2px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.Raum{
-    background-color: grey; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 2px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-
-.Datum{
-    background-color: grey; /* Green */
-    border: none;
-    color: white;
-    padding: 8.4px 2px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.StartZeit{
-    background-color: grey; /* Green */
-    border: none;
-    color: white;
-    padding: 8.4px 2px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.EndZeit{
-    background-color: grey; /* Green */
-    border: none;
-    color: white;
-    padding: 8.2px 2px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.submit{
-    
-text-align:center;
-    display:block;
-    padding: 10px 5px;
-    font-size: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
