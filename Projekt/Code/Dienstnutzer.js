@@ -75,7 +75,9 @@ app.get('/termine', function(req,res){
 	var url = dURL + '/Termine';
 	
 	request(url,function(err,response,body){
-		res.status(response.statusCode).send(body);
+		var myJsonString = "{ \"Termine\":["+body+"]}";
+		var toSend = myJsonString.replace(/}/g,"},").replace(",]","]").slice(",",-1);
+		res.status(response.statusCode).send(toSend);
 	});
 	
 });
@@ -93,7 +95,9 @@ app.get('/termine:Fach', function(req,res){
 	}
 	
 	request(options, function(err,response,body){
-		res.status(response.statusCode).send(body);
+		var myJsonString = "{ \"Termine\":["+body+"]}";
+		var toSend = myJsonString.replace(/}/g,"},").replace(",]","]").slice(",",-1);
+		res.status(response.statusCode).send(toSend);
 	});
 });
 
@@ -133,7 +137,7 @@ app.get('/findeTermin:Min', function(req,res){
 		//sotieren um die Suchergebnisse zu verbessern
 		//Quelle: https://stackoverflow.com/a/1129270
 		dateEvents = dateEvents.sort(function(a,b) {return (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0)} ); 
-		console.log(dateEvents);
+		
 		//Berechnung der benötigten Zeit mithilfe von
 		//Quelle: https://stackoverflow.com/a/38999603
 		var requiredGap = min * 60 * 1000;
@@ -163,7 +167,7 @@ app.get('/findeTermin:Min', function(req,res){
 		//wenn keine freien Blöcken gefunden wurden dann firstGap == null
 		if (firstGap != null) 
 		{
-			var x = dateFormat(firstGap.start, "dd.mm.yyyy' 'HH:MM");
+		  var x = dateFormat(firstGap.start, "dd.mm.yyyy' 'HH:MM");
 		  var nachricht = "Nächster freie Termin um: "+x;
 		  res.status(200).send(nachricht);
 		} 
