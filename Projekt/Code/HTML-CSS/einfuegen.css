@@ -47,3 +47,92 @@ ul {
 li a {
     color: #666;
 }
+
+h1 {
+    color: #555555;
+    border:blue;
+    padding: 14px 16px;
+    background: #A4A4A4;
+}
+
+h1:hover {
+    background-color: #A4A4A4;
+    color:white;
+    
+}
+
+ .Fach{
+    background-color: grey; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+.Person{
+    background-color: grey; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.Raum{
+    background-color: grey; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+.Datum{
+    background-color: grey; /* Green */
+    border: none;
+    color: white;
+    padding: 8.4px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.StartZeit{
+    background-color: grey; /* Green */
+    border: none;
+    color: white;
+    padding: 8.4px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.EndZeit{
+    background-color: grey; /* Green */
+    border: none;
+    color: white;
+    padding: 8.2px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.submit{
+    
+text-align:center;
+    display:block;
+    padding: 10px 5px;
+    font-size: 16px;
+}
