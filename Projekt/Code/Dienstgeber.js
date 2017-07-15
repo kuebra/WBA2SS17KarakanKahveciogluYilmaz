@@ -142,7 +142,6 @@ app.delete('/loschen:id', function(req,res){
 
 					delete alleTermine.Termine[i];
 					geloescht = true;
-
 				}
 		}
 		var StringJson= JSON.stringify(alleTermine);
