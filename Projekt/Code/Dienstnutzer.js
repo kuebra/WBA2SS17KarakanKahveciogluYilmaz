@@ -19,6 +19,13 @@ app.use(bodyParser.urlencoded({
 //um den request zu parsen
 app.use(bodyParser.json());
 
+//Aktiviere CORS um vom browser auf den Server zugreifen zu können
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 //daten löschen 
 app.delete('/loschen:id', function(req,res){
 	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
@@ -76,6 +83,20 @@ app.get('/termine', function(req,res){
 	
 	request(url,function(err,response,body){
 		var myJsonString = "{ \"Termine\":["+body+"]}";
+		var toSend = myJsonString.replace(/}/g,"},").replace(",]","]").slice(",",-1);
+		res.status(response.statusCode).send(toSend);
+	});
+	
+});
+
+//holen der gelöschten Termine
+app.get('/geloschte', function(req,res){
+	
+	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
+	var url = dURL + '/geloschte';
+	
+	request(url,function(err,response,body){
+		var myJsonString = "{ \"GeloeschteTermine\":["+body+"]}";
 		var toSend = myJsonString.replace(/}/g,"},").replace(",]","]").slice(",",-1);
 		res.status(response.statusCode).send(toSend);
 	});
