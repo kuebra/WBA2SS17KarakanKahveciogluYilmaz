@@ -57,17 +57,17 @@ app.get('/highestID', function(req,res){
 		
 		toSearch = JSON.parse(toSearch);
 		
-		var maxID=0;
+		var maxID=toSearch.Termine[0];
 		for (var i in toSearch.Termine)
 			{
 				var current = toSearch.Termine[i];
-				if (maxID<current.ID)
+				if (maxID.ID<current.ID)
 					{
-						maxID=current.ID
+						maxID=current;
 					}
 			}
-		
-		res.status(response.statusCode).send(maxID);
+		console.log(maxID);
+		res.status(response.statusCode).send(JSON.stringify(maxID));
 	});
 });
 
