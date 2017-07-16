@@ -29,9 +29,10 @@
 	
 	<p>Der nächste freie Block:</p>
       
-    <form action="/einfugen" method="post">
+    <form method="post" action="http://localhost:8080/einfugen">
 
 		<div>
+			<input type="hidden" id="IDis" name="ID" value="">
 			<label class="Fach" for="Fach">Fach:</label>
 			<input id="Fach" name="Fach"  Placeholder="Fach">
 		</div>
@@ -58,12 +59,13 @@
 		
 		<div>
 			<label class="EndZeit" for="EndZeit">EndZeit:</label>
-			<input type="time" id="EndZeit" name="Endzeit"  value="00:00">
+			<input type="time" id="EndZeit" name="EndZeit"  value="00:00">
 		</div>
 		
-		<input type="submit" value="Senden">
+		<input id="submitbtn" type="submit" value="Senden">
 
     </form>
 
 </body>
+	<script src="/js/einfugen.js"></script>
 </html>

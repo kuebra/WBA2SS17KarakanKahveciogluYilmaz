@@ -6,6 +6,7 @@ var getTermine = dURL +'/geloschte';
 
 
 //zum verbinden mit server
+//Quelle: https://www.html5rocks.com/en/tutorials/cors/
 function createCORSRequest(method, url) {
   var xhr = new XMLHttpRequest();
   if ("withCredentials" in xhr) {

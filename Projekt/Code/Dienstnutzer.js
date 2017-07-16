@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 //Aktiviere CORS um vom browser auf den Server zugreifen zu können
+//Quelle: https://www.html5rocks.com/en/tutorials/cors/
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -33,14 +34,41 @@ app.delete('/loschen:id', function(req,res){
 	var id = req.params.id.replace(':','');
 	
 	var options ={
-		uri: dURL + '/loschen:' + id,
-		method: 'DELETE'
+		uri: dURL + '/loschen:' + id
 	}
 	
 	request(options, function(err,response,body){
 		res.status(response.statusCode).send(body);
 	});
 	
+});
+
+
+//die höchste ID in den Daten ermitteln
+app.get('/highestID', function(req,res){
+	
+	
+	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
+	var url = dURL + '/Termine';
+	
+	request(url,function(err,response,body){
+		var myJsonString = "{ \"Termine\":["+body+"]}";
+		var toSearch = myJsonString.replace(/}/g,"},").replace(",]","]").slice(",",-1);
+		
+		toSearch = JSON.parse(toSearch);
+		
+		var maxID=0;
+		for (var i in toSearch.Termine)
+			{
+				var current = toSearch.Termine[i];
+				if (maxID<current.ID)
+					{
+						maxID=current.ID
+					}
+			}
+		
+		res.status(response.statusCode).send(maxID);
+	});
 });
 
 //Einfügen von terminen
