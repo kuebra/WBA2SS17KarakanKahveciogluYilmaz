@@ -30,18 +30,17 @@ var dHost = 'http://localhost';
 var dPort = 8080;
 var dURL = dHost + ':' + dPort;
 
-var getHieghestID = dURL +'/highestID';
+//wird noch ausgebssert mit variabler zeitangabe
+var getFreeBlock = dURL +'/findeTermin:60';
 
-var xhr = createCORSRequest('GET', getHieghestID);
+var xxhr = createCORSRequest('GET', getFreeBlock);
 
-xhr.onload = function()
+xxhr.onload = function()
 {
-	var data = JSON.parse(xhr.responseText);
-	console.log(data.ID);
-	var x = 1 + parseInt(data.ID);
-	console.log("Next ID: "+x);
+	var data = xxhr.responseText;
+	console.log(data);
+	
 
-	document.getElementById('IDis').value=x;
-	return x;
+	document.getElementById('Zeiger').innerHTML=data;
 }
-	xhr.send();
+	xxhr.send();

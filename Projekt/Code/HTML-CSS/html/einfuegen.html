@@ -27,7 +27,7 @@
     </nav>
     <h1>Einfügen</h1>
 	
-	<p>Der nächste freie Block:</p>
+	<p id="Zeiger">Der nächste freie Block:</p>
       
     <form method="post" action="http://localhost:8080/einfugen">
 
@@ -61,11 +61,12 @@
 			<label class="EndZeit" for="EndZeit">EndZeit:</label>
 			<input type="time" id="EndZeit" name="EndZeit"  value="00:00">
 		</div>
-		
+		<label id="ok"></label>
 		<input id="submitbtn" type="submit" value="Senden">
 
     </form>
 
 </body>
 	<script type="text/javascript" src="/js/einfugen.js"></script>
+	<script type="text/javascript" src="/js/findeFreienBlock.js"></script>
 </html>

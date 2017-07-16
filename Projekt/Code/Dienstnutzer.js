@@ -86,7 +86,7 @@ app.post('/einfugen', function(req,res){
 	
 	console.log(options.uri);
 	request(options, function(err,response,body){
-		res.status(response.statusCode).send(body);
+		res.status(response.statusCode).redirect(req.headers.origin+'/html/veranstaltung.html');
 	});
 });
 
