@@ -33,8 +33,11 @@ app.delete('/loschen:id', function(req,res){
 	
 	var id = req.params.id.replace(':','');
 	
+	console.log(id);
+	
 	var options ={
-		uri: dURL + '/loschen:' + id
+		uri: dURL + '/loschen:' + id,
+		method: 'DELETE'
 	}
 	
 	request(options, function(err,response,body){
