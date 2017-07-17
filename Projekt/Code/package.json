@@ -1,8 +1,7 @@
-
 {
-  "name": "kickoff",
+  "name": "Veranstaltungs-Früh-Warn-System",
   "version": "1.0",
-  "description": "Die Lösungen der Aufgaben von WBA2-Kickoff",
+  "description": "Die vorläufigen Ergebnisse zu VFWS",
   "author": "Abdurrahman Karakan <abdurrahman.karakan@smail.th-koeln.de>",
   "contributors": 
     [
@@ -34,16 +33,12 @@
     [
         "TH-Koeln",
         "WBA2",
-        "Kickoff",
         "Technische Hochschule Köln",
-        "Webbasierende Anwendungen 2"
+        "Webbasierte Anwendungen 2"
 ],
   "dependencies": 
     {
-        "express":"4.15.3",
-		"Body-Parser":"1.17.2",
-		"fs":"0.0.1-security",
-		"dateformat":"2.0.0"
+		
     },
   "license": "OSL-3.0"
 }
