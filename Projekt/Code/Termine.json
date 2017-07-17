@@ -7,7 +7,15 @@
 		, "Datum": "2017-07-01"
 		, "StartZeit": "11:00"
 		, "EndZeit": "12:00"
-	}, null, {
+	}, {
+		"ID": "2"
+		, "Fach": "WBA2"
+		, "Person": "Dr. Pavlov"
+		, "Raum": "3193"
+		, "Datum": "2017-07-01"
+		, "StartZeit": "13:00"
+		, "EndZeit": "14:00"
+	}, {
 		"ID": "3"
 		, "Fach": "BWL"
 		, "Person": "Dr. Makaroni"
@@ -15,7 +23,15 @@
 		, "Datum": "2017-07-01"
 		, "StartZeit": "15:00"
 		, "EndZeit": "16:00"
-	}, null, {
+	}, {
+		"ID": "4"
+		, "Fach": "Deutsch"
+		, "Person": "Dr. George"
+		, "Raum": "2013"
+		, "Datum": "2017-07-01"
+		, "StartZeit": "17:00"
+		, "EndZeit": "18:00"
+	}, {
 		"ID": "5"
 		, "Fach": "Physik"
 		, "Person": "Dr. Hasan"
@@ -31,13 +47,5 @@
 		, "Datum": "2017-07-01"
 		, "StartZeit": "20:30"
 		, "EndZeit": "21:00"
-	}, {
-		"ID": "7"
-		, "Fach": "Mathe"
-		, "Person": "Abdu"
-		, "Raum": "K123"
-		, "Datum": "2017-06-15"
-		, "StartZeit": "09:00"
-		, "EndZeit": "10:00"
 	}]
 }
