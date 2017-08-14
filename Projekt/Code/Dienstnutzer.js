@@ -69,7 +69,7 @@ app.get('/highestID', function(req,res){
 						maxID=current;
 					}
 			}
-		console.log(maxID);
+		//console.log(maxID);
 		res.status(response.statusCode).send(JSON.stringify(maxID));
 	});
 });
@@ -159,7 +159,7 @@ app.get('/findeTermin:Min', function(req,res){
 	console.log("Zeit: " + Date.now() +" Pfad: " + req.path);
 	
 	var min = parseInt(req.params.Min.replace(':',''));
-	
+	console.log("die minuten:"+min);
 	var options ={
 		uri: dURL + '/termine',
 		method: 'GET'
@@ -203,8 +203,9 @@ app.get('/findeTermin:Min', function(req,res){
 		  var current = dateEvents[i];
 		  var diff = current.start - prev.end;
 
-		  if (diff >= requiredGap) 
-		  {
+		  if (diff >= requiredGap && current.end.getUTCHours() < 20 && current.start.getUTCHours() > 9) 
+		  {			  
+			  
 			firstGap = 
 			{
 			  start: prev.end,
@@ -220,8 +221,9 @@ app.get('/findeTermin:Min', function(req,res){
 		//wenn keine freien Blöcken gefunden wurden dann firstGap == null
 		if (firstGap != null) 
 		{
-		  var x = dateFormat(firstGap.start, "dd.mm.yyyy' 'HH:MM");
+		  var x = dateFormat(firstGap.start, "UTC:dd.mm.yyyy' 'HH:MM");
 		  var nachricht = "Nächster freie Termin um: "+x;
+			console.log(nachricht);
 		  res.status(200).send(nachricht);
 		} 
 		else 
