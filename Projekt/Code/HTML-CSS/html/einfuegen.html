@@ -27,8 +27,25 @@
     </nav>
     <h1>Einfügen</h1>
 	
-	<p id="Zeiger">Server Ausfall. Termine können nicht eingetragen werden.</p>
-      
+	<div>
+		<label id="Zeiger">Server Ausfall. Termine können nicht eingetragen werden.</label>
+		
+		<div class="ZeitAuswahlkasten">
+			<label>Blockgröße (in Minuten):</label>
+			<select id="ZeitAuswahl" onchange="findeNochmal()">
+				<option>15</option>
+				<option>30</option>
+				<option>45</option>
+				<option selected>60</option>
+				<option>90</option>
+				<option>120</option>
+		</select>      
+		</div>
+		
+	</div>
+	
+	<p></p>
+
     <form method="post" action="http://localhost:8080/einfugen">
 
 		<div>
@@ -69,4 +86,5 @@
 </body>
 	<script type="text/javascript" src="../js/einfugen.js"></script>
 	<script type="text/javascript" src="../js/findeFreienBlock.js"></script>
+	<script type="text/javascript" src="../js/findeFreienBlockNochmal.js"></script>
 </html>

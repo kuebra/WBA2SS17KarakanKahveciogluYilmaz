@@ -24,10 +24,13 @@ function createCORSRequest(method, url) {
   return xhr;
 }
 
-function finde(){
+function findeNochmal(){
+	
+	var dHost = 'http://localhost';
+	var dPort = 8080;
+	var dURL = dHost + ':' + dPort;
 	var auswahl = document.getElementById("ZeitAuswahl");
 	var x = auswahl.options[auswahl.selectedIndex].text;
-	console.log(x);
 	var getFreeBlock = dURL +'/findeTermin:'+ x;
 
 	var xxhr = createCORSRequest('GET', getFreeBlock);
@@ -36,31 +39,10 @@ function finde(){
 	{
 		var data = xxhr.responseText;
 		console.log(data);
-
+		
+		console.log(data);
 
 		document.getElementById('Zeiger').innerHTML=data;
 	}
 	xxhr.send();
 }
-
-var dHost = 'http://localhost';
-var dPort = 8080;
-var dURL = dHost + ':' + dPort;
-
-//wird noch ausgebssert mit variabler zeitangabe
-var getFreeBlock = dURL +'/findeTermin:60';
-
-var xxhr = createCORSRequest('GET', getFreeBlock);
-
-xxhr.onload = function()
-{
-	var data = xxhr.responseText;
-	console.log(data);
-	
-
-	document.getElementById('Zeiger').innerHTML=data;
-}
-	xxhr.send();
-var auswahl = document.getElementById("ZeitAuswahl");
-
-auswahl.addEventListener('change', finde());
