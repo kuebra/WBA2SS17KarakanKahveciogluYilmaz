@@ -48,13 +48,27 @@ xhr.onload = function()
 		var zelle5 = reihe.insertCell(4);
 		var zelle6 = reihe.insertCell(5);
 		var zelle7 = reihe.insertCell(6);
+		var zelle8 = reihe.insertCell(7);
+
+
 		zelle1.innerHTML = x.ID;
 		zelle2.innerHTML = x.Fach;
 		zelle3.innerHTML = x.Person;
 		zelle4.innerHTML = x.Raum;
 		zelle5.innerHTML = x.Datum;
 		zelle6.innerHTML = x.StartZeit;
-		zelle7.innerHTML = x.EndZeit;
+		zelle7.innerHTML = x.EndZeit;	
+		
+		//Löschen Button wird eingefügt
+		var btn = document.createElement("BUTTON");       // Create a <button> element
+		var t = document.createTextNode("Löschen");       // Create a text node
+		btn.appendChild(t);
+		btn.setAttribute("id","LoeschButton");
+		btn.setAttribute("onclick","myfunction(this)");
+		//Button Hinzugefügt
+		zelle8.appendChild(btn);
+		
+		
 	}
 	
   }  
